@@ -1,9 +1,16 @@
 package com.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.demo.pojo.Role;
 import com.demo.pojo.User;
 import io.swagger.annotations.ApiModel;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 @ApiModel(value="用户数据访问类", description="包括家属、队员、管理员")
-public interface IUserMapper extends BaseMapper<User> {
+public interface UserMapper extends BaseMapper<User> {
+    //根据用户id获取角色
+    Role getRoles(Integer id);
 }

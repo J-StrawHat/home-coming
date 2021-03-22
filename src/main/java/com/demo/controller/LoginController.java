@@ -1,40 +1,62 @@
 package com.demo.controller;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.demo.mapper.IUserMapper;
 import com.demo.pojo.RespBean;
+import com.demo.pojo.Role;
 import com.demo.pojo.User;
+import com.demo.pojo.UserLoginParam;
 import com.demo.service.IUserService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+import java.util.List;
 
 @RestController
 @Api(tags = "用户登陆模块接口规范说明")
 public class LoginController {
 
     @Autowired
-    IUserService userService;
+    private IUserService userService;
 
+
+    @ApiOperation(value = "登录之后返回的token")
     @PostMapping("/login")
-    @ApiOperation(value = "用户账号与密码匹配的登录方法",
-            notes = "")
-    public RespBean Login(String username,String password) {
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        User user = null;
-        user = userService.getOne(queryWrapper.eq("userName", username).eq("userPassword", password), false);
-        if(user != null){
-            return RespBean.success("登陆成功!", user);
+    public RespBean login(@RequestBody UserLoginParam userLoginParam, HttpServletRequest request)
+    {
+        return userService.login(userLoginParam.getUsername(),userLoginParam.getPassword(),request);
+    }
+
+    @ApiOperation(value = "获取当前登录用户的信息")
+    @GetMapping("/user/info")
+    public User getAdminInfo(Principal principal)
+    {
+        if(null==principal)
+        {
+            return null;
         }
-        else {
-            return RespBean.error("密码错误或者用户名未注册!", null);
-        }
+        String username=principal.getName();
+        User user=userService.getUserByUserName(username);
+        user.setPassword(null);
+        Role roles = userService.getRoles(user.getId());
+        System.out.println(roles);
+        user.setRole(roles);
+        return user;
+    }
+
+
+
+
+    @ApiOperation(value = "退出登录")
+    @PostMapping("/logout")
+    public RespBean logout()
+    {
+        return RespBean.success("注销成功");
     }
 }

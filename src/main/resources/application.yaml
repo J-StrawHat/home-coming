@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 #数据库配置
 spring:
@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: "jdbc:mysql://localhost/guijia?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai"
     username: root
-    password: root
+    password:
 
 #mybatis-plus配置
 mybatis-plus:
@@ -19,3 +19,12 @@ mybatis-plus:
 logging:
   level:
     com.demo.mapper: debug
+jwt:
+  # Jwt存储的请求头
+  tokenHeader: Authorization
+  # Jwt加密秘钥
+  secret: yeb-secret
+  # Jwt 的超期限时间（60*60）*24
+  expiration: 604800
+  # Jwt负载中拿到开头
+  tokenHead: Bearer
