@@ -7,7 +7,7 @@
 一、复制 Git 链接：
 
 ```
-https://github.com/J-StrawHat/help-elderly-return-home.git
+https://github.com/J-StrawHat/home-coming.git
 ```
 
 二、打开 IDEA ，点击 最左上角菜单栏 的 文件（File），点击 New —— Project from Version Control，如图：
