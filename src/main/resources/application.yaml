@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+#数据库配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://localhost/guijia?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai"
+    username: root
+    password:
+
+#mybatis-plus配置
+mybatis-plus:
+ mapper-locations: classpath:/mapper/*Mapper.xml
+#配置mybatis数据返回类型别名
+ type-aliases-package: com.demo.pojo
+ #日志
+logging:
+  level:
+    com.demo.mapper: debug
