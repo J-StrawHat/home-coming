@@ -10,6 +10,7 @@
 https://github.com/J-StrawHat/home-coming.git
 ```
 
+
 二、打开 IDEA ，点击 最左上角菜单栏 的 文件（File），点击 New —— Project from Version Control，如图：
 
 <img src="https://gitee.com/j__strawhat/MyImages/raw/master/20210321155333.png" style="zoom: 50%;" />
