@@ -2,11 +2,9 @@ package com.demo.utils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import io.swagger.models.auth.In;
 
 import javax.net.ssl.SSLException;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -20,7 +18,7 @@ public class FaceUtils {
     private final static String API_SECRET = "ijnvN-eRxrPOhs-TSbVyAWTxyVN0ytYb";
 
     // 键代表 FaceSet 的唯一标识，即outer_id；值代表该 FaceSet 是否存在
-    private static HashMap<String, Boolean> facesSets;
+    private static HashMap<String, Boolean> facesSets = new HashMap<>();
 
     /**
      * 创建一个人脸的集合 FaceSet，用于存储人脸标识 face_token
@@ -79,15 +77,16 @@ public class FaceUtils {
 
     /**
      * 传入图片进行人脸检测和人脸分析，获取该人脸的唯一标识 face_token
+     * @param  filepath 文件路径
      * @return 人脸的标识
      * @throws Exception
      */
-    public static String getFaceToken() throws Exception{
+    public static String getFaceToken(String filepath) throws Exception{
         //对应的API
         String url = "https://api-cn.faceplusplus.com/facepp/v3/detect";
 
         //获取文件对应的字节数组
-        File file = new File("你的本地图片路径");
+        File file = new File(filepath);
         HashMap<String, byte[]> byteMap = new HashMap<>();
         byteMap.put("image_file", getBytesFromFile(file));
 
@@ -115,14 +114,14 @@ public class FaceUtils {
     /**
      * 在一个已有的 FaceSet 中找出与目标人脸最相似的一张或多张人脸，返回置信度
      * @param outer_id 用户自定义的 FaceSet 标识
+     * @param filepath 文件路径
      * @return 比对结果置信度
      * @throws Exception
      */
+    public static Double searchFace(String outer_id, String filepath) throws Exception{
+        String url = "https://api-cn.faceplusplus.com/facepp/v3/search";
 
-    public static Double searchFace(String outer_id) throws Exception{
-        String url = "https://api-cn.faceplusplus.com/facepp/v3/detect";
-
-        File file = new File("你的本地图片路径");
+        File file = new File(filepath);
         HashMap<String, byte[]> byteMap = new HashMap<>();
         byteMap.put("image_file", getBytesFromFile(file));
 
@@ -240,5 +239,5 @@ public class FaceUtils {
         }
         return null;
     }
-
 }
+
