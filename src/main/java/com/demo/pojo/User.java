@@ -58,11 +58,11 @@ public class User implements UserDetails,Serializable {
     private String province;
 
     @ApiModelProperty("地址的市")
-    @TableField("address_town")
+    @TableField("address_city")
     private String city;
 
     @ApiModelProperty("地址的县")
-    @TableField("address_province")
+    @TableField("address_county")
     private String county;
 
     @ApiModelProperty("地址的乡镇")

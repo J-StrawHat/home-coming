@@ -30,7 +30,7 @@ public class LoginController {
     @PostMapping("/login")
     public RespBean login(@RequestBody UserLoginParam userLoginParam, HttpServletRequest request)
     {
-        return userService.login(userLoginParam.getUsername(),userLoginParam.getPassword(),request);
+        return userService.login(userLoginParam.getUsername(),userLoginParam.getPassword(),userLoginParam.getCode(),request);
     }
 
     @ApiOperation(value = "获取当前登录用户的信息")

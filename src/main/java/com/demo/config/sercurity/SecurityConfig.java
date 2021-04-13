@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -42,17 +43,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     @Bean
     public UserDetailsService userDetailsService()
     {
-        return username->{
+        return new UserDetailsService() {
+            @Override
+            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-            User user=userService.getUserByUserName(username);
-            if(null!=user)
-            {
-                Role role = userService.getRoles(user.getId());
-                user.setRole(role);
-                return user;
+                User user = userService.getUserByUserName(username);
+                if (null != user) {
+                    Role role = userService.getRoles(user.getId());
+                    user.setRole(role);
+                    return user;
 
+                }
+                throw new UsernameNotFoundException("用户名和密码不正确");
             }
-            throw new UsernameNotFoundException("用户名和密码不正确");
         };
     }
 
