@@ -84,7 +84,30 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return RespBean.success("登录成功",tokenMap);
     }
 
+    @Override
+    public List<User> getAllUserInfo() {
+        return userMapper.getAllUserInfo();
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return userMapper.getUserById(id);
+    }
 
 
+    @Override
+    public int insert(User user) {
+        return userMapper.insert(user);
+    }
+
+    @Override
+    public int update(User user) {
+        return userMapper.updateById(user);
+    }
+
+    @Override
+    public int deleteById(int id) {
+        return userMapper.deleteById(id);
+    }
 }
 
