@@ -96,18 +96,26 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
 
     @Override
-    public int insert(User user) {
+    public Integer insert(User user) {
         return userMapper.insert(user);
     }
 
     @Override
-    public int update(User user) {
+    public Integer update(User user) {
         return userMapper.updateById(user);
     }
 
     @Override
-    public int deleteById(int id) {
+    public Integer deleteById(int id) {
         return userMapper.deleteById(id);
+    }
+
+    @Override
+    public Boolean hasUsed(String username) {
+        Map<String, Object> strmap = new HashMap<>();
+        strmap.put("username", username);
+        List<User> userList = userMapper.selectByMap(strmap);
+        return (userList.size() != 0);
     }
 }
 

@@ -17,15 +17,16 @@ public interface IUserService extends IService<User> {
     //登录之后返回的token
     RespBean login(String username, String password,String code, HttpServletRequest request);
 
+
     List<User> getAllUserInfo();
 
     User getUserById(int id);
 
-    int insert(User user);
+    Integer insert(User user);
 
-    int update(User user);
+    Integer update(User user);
 
-    int deleteById(int id);
+    Integer deleteById(int id);
 
-
+    Boolean hasUsed(String username);
 }
