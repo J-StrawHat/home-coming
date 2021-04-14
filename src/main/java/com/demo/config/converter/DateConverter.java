@@ -15,4 +15,9 @@ public class DateConverter implements Converter<String, LocalDate> {
     public LocalDate convert(String s) {
         return LocalDate.parse(s, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
+
+    @Override
+    public <U> Converter<String, U> andThen(Converter<? super LocalDate, ? extends U> after) {
+        return null;
+    }
 }

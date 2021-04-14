@@ -3,6 +3,7 @@ package com.demo.controller;
 import com.demo.mapper.UserMapper;
 import com.demo.pojo.RespBean;
 import com.demo.pojo.User;
+import com.demo.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,18 @@ import java.util.List;
 public class TestController {
 
     @Autowired
+    private IUserService userService;
+
+    @Autowired
     private UserMapper userMapper;
 
     @ApiOperation("获取所有用户信息")
     @GetMapping("/User")
     public List<User> getUserAllInfo()
     {
-        List<User> users = userMapper.selectList(null);
+        List<User> users =userService.getAllUserInfo();
+
+
         return users;
     }
     @ApiOperation("添加用户")
@@ -40,6 +46,5 @@ public class TestController {
         else {
             return RespBean.error("插入失败");
         }
-
     }
 }

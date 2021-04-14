@@ -13,4 +13,8 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
     //根据用户id获取角色
     Role getRoles(Integer id);
+    //查询所有用户
+    List<User> getAllUserInfo();
+    //查询单个用户
+    User getUserById(int id);
 }

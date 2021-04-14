@@ -5,6 +5,10 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.demo.pojo.User">
         <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="gender" property="gender" />
+        <result column="age" property="age" />
+        <result column="birthday" property="birthday" />
         <result column="phone" property="phone" />
         <result column="address_province" property="province" />
         <result column="address_city" property="city" />
@@ -14,14 +18,33 @@
         <result column="createTime" property="createTime"></result>
         <result column="updateTime" property="updateTime"></result>
     </resultMap>
-<!--->
+
 
     <resultMap id="UserWithRole" type="com.demo.pojo.User" extends="BaseResultMap">
      <association property="role" javaType="com.demo.pojo.Role">
-         <id property="id" column="rid"></id>
-         <result property="roleName" column="rname"></result>
+         <id column="rid" property="id" />
+         <result column="roleName" property="roleName" ></result>
      </association>
     </resultMap>
+
+    <select id="getAllUserInfo" resultMap="UserWithRole">
+        SELECT u.*, r.id rid, r.roleName
+        FROM
+            `user` u,
+            `role` r
+        WHERE
+            u.userRole = r.id
+    </select>
+
+    <select id="getUserById" resultMap="UserWithRole">
+        SELECT u.*, r.id rid, r.roleName
+        FROM
+            `user` u,
+            `role` r
+        WHERE
+            u.userRole = r.id
+            AND u.id = #{id}
+    </select>
 
     <select id="getRoles" resultType="com.demo.pojo.Role">
         SELECT
@@ -31,8 +54,7 @@
             `role` r
         WHERE
             u.userRole = r.id
-          AND u.id =#{id}
-
-
+            AND u.id =#{id}
     </select>
+
 </mapper>

@@ -81,6 +81,10 @@ public class User implements UserDetails,Serializable {
     @TableField("createTime")
     private LocalDate createTime;
 
+    @ApiModelProperty("角色ID")
+    @TableField("userRole")
+    private Integer userRole;
+
     @ApiModelProperty("修改的时间")
     @TableField("updateTime")
     private LocalDate updateTime;
