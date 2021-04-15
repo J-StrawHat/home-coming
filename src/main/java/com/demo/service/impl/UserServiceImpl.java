@@ -43,6 +43,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public User getUserByUserName(String username) {
+
         return  userMapper.selectOne(new QueryWrapper<User>().eq("username",username)) ;
     }
 

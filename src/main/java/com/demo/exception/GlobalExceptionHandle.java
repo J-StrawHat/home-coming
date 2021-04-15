@@ -1,6 +1,7 @@
 package com.demo.exception;
 
 import com.demo.pojo.RespBean;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -22,6 +23,14 @@ public class GlobalExceptionHandle {
           return RespBean.error("该数据有关联数据,删除失败");
       }
         return RespBean.error("数据库异常，删除失败");
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public RespBean mySqlException(UsernameNotFoundException e)
+    {
+        e.printStackTrace();
+
+        return RespBean.error("用户名或密码错误");
     }
 
 }
