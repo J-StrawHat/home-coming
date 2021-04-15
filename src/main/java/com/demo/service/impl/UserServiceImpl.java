@@ -90,7 +90,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public User getUserById(int id) {
+    public User getUserById(Integer id) {
         return userMapper.getUserById(id);
     }
 
@@ -106,7 +106,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public Integer deleteById(int id) {
+    public Integer deleteById(Integer id) {
         return userMapper.deleteById(id);
     }
 

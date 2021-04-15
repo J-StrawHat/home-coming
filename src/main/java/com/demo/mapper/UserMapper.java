@@ -1,6 +1,8 @@
 package com.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.demo.pojo.Role;
 import com.demo.pojo.User;
 import io.swagger.annotations.ApiModel;
@@ -16,5 +18,5 @@ public interface UserMapper extends BaseMapper<User> {
     //查询所有用户
     List<User> getAllUserInfo();
     //查询单个用户
-    User getUserById(int id);
+    User getUserById(Integer id);
 }

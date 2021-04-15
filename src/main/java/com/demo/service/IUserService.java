@@ -1,5 +1,7 @@
 package com.demo.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.demo.pojo.RespBean;
 import com.demo.pojo.Role;
@@ -20,13 +22,13 @@ public interface IUserService extends IService<User> {
 
     List<User> getAllUserInfo();
 
-    User getUserById(int id);
+    User getUserById(Integer id);
 
     Integer insert(User user);
 
     Integer update(User user);
 
-    Integer deleteById(int id);
+    Integer deleteById(Integer id);
 
     Boolean hasUsed(String username);
 }
