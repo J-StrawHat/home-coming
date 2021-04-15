@@ -82,9 +82,11 @@ public class Elder {
     @TableField("miss_time")
     private LocalDate missTime;
 
-    @ApiModelProperty("失踪类型")
+    @ApiModelProperty("失踪类型ID")
     @TableField("miss_type")
-    private Integer missType;
+    private Integer missTypeId;
+
+
 
     @ApiModelProperty("联系人")
     @TableField("contactor")
