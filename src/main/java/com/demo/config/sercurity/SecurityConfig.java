@@ -54,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                     return user;
 
                 }
-                throw new UsernameNotFoundException("用户名和密码不正确");
+                throw new UsernameNotFoundException("用户名或密码不正确");
             }
         };
     }

@@ -9,8 +9,11 @@ import com.demo.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -20,7 +23,7 @@ public class UserController {
     private IUserService userService;
 
     @ApiOperation("查询所有用户的信息")
-    @GetMapping("/allUsers")
+    @GetMapping("/User")
     public List<User> getAllUserInfo(){
         return userService.getAllUserInfo();
     }
@@ -39,8 +42,10 @@ public class UserController {
     }
 
     @ApiOperation("添加一个用户记录")
-    @PostMapping("/addUser")
+    @PostMapping("/User")
     public RespBean insertUser(@RequestBody User user){
+        user.setUpdateTime(LocalDate.now());
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         int res = userService.insert(user);
         if(res > 0){
             return RespBean.success("插入成功");
@@ -51,7 +56,7 @@ public class UserController {
     }
 
     @ApiOperation("删除一个用户记录")
-    @DeleteMapping("/deleteUser")
+    @DeleteMapping("/User")
     public RespBean deleteUser(int id){
         int res = userService.deleteById(id);
         if(res > 0){
@@ -63,8 +68,9 @@ public class UserController {
     }
 
     @ApiOperation("修改一个用户信息")
-    @PutMapping("/setUserInfo")
+    @PutMapping("/User")
     public RespBean setUserInfo(@RequestBody User user){
+       user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()) );
         int res = userService.update(user);
         if(res > 0){
             return RespBean.success("修改成功");
