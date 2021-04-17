@@ -1,11 +1,14 @@
 package com.demo.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.demo.mapper.UserMapper;
 import com.demo.pojo.RespBean;
 import com.demo.pojo.Role;
 import com.demo.pojo.User;
 import com.demo.service.IUserService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,10 +51,10 @@ public class UserController {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         int res = userService.insert(user);
         if(res > 0){
-            return RespBean.success("插入成功");
+            return RespBean.success("注册成功");
         }
         else {
-            return RespBean.error("插入失败");
+            return RespBean.error("注册失败");
         }
     }
 
@@ -78,5 +81,13 @@ public class UserController {
         else {
             return RespBean.error("修改失败");
         }
+    }
+    @ApiOperation("返回分页用户信息")
+    @GetMapping("/UserPage/{p}")
+    public PageInfo setUserInfo(@PathVariable("p") Integer p ){
+        PageHelper.startPage(p,6);
+        List<User> allUserInfo = userService.getAllUserInfo();
+        PageInfo pageInfo = new PageInfo(allUserInfo);
+        return pageInfo;
     }
 }

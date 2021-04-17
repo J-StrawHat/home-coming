@@ -86,9 +86,7 @@ public class Elder {
     @TableField("miss_type")
     private Integer missTypeId;
 
-    @ApiModelProperty("失踪类型")
-    @TableField(exist = false)
-    private MissingType missingType;
+
 
     @ApiModelProperty("联系人")
     @TableField("contactor")
@@ -138,7 +136,9 @@ public class Elder {
     @TableField("remark")
     private String remark;
 
-
+    @ApiModelProperty("失踪类")
+    @TableField(exist = false)
+    private MissingType missingType;
 
 
 

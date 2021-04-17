@@ -17,6 +17,8 @@ public interface UserMapper extends BaseMapper<User> {
     Role getRoles(Integer id);
     //查询所有用户
     List<User> getAllUserInfo();
+
+    //分页查询所有用户
     //查询单个用户
     User getUserById(Integer id);
 }

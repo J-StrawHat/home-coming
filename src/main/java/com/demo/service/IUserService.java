@@ -31,4 +31,6 @@ public interface IUserService extends IService<User> {
     Integer deleteById(Integer id);
 
     Boolean hasUsed(String username);
+
+
 }
