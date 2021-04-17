@@ -46,21 +46,17 @@
     </resultMap>
 
     <select id="getMissingType" resultType="com.demo.pojo.MissingType">
-        select m.miss_typeName,e.miss_type
-        from elder_info e,missing_type m
-        where m.id=e.miss_type
+        select
+               m.miss_typeName,e.miss_type
+        from
+             elder_info e,missing_type m
+        where
+              m.id=e.miss_type
             and e.id=#{id};
     </select>
 
-    <resultMap id="ElderWithMissingType" type="Elder" extends="BaseResultMap">
-        <association property="missingType" javaType="com.demo.pojo.MissingType">
-            <id column="mid" property="id"></id>
-            <result column="miss_typeName" property="missTypeName"></result>
-        </association>
-    </resultMap>
-
     <select id="getAllElderInfo" resultMap="ElderWithMissingType">
-        select e.*,m.id mid,m.miss_typeName
+        select e.*, m.id mid, m.miss_typeName
         from elder_info e,missing_type m
         where e.miss_type=m.id
     </select>
@@ -68,7 +64,7 @@
     <select id="getElderById" resultMap="ElderWithMissingType">
         select e.*,m.id mid,m.miss_typeName
         from elder_info e,missing_type m
-        where id=#{id}
+        where e.id=#{id}
             and e.miss_type=m.id
     </select>
 

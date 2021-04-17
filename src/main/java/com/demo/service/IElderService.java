@@ -21,4 +21,5 @@ public interface IElderService extends IService<Elder> {
 
     Integer deleteById(Integer id);
 
+    Integer insert(Elder elder);
 }

@@ -49,5 +49,10 @@ public class ElderServiceImpl extends ServiceImpl<ElderMapper, Elder> implements
         return elderMapper.deleteById(id);
     }
 
+    @Override
+    public Integer insert(Elder elder) {
+        return elderMapper.insert(elder);
+    }
+
 
 }

@@ -1,5 +1,9 @@
 # 关于 Git 使用
 
+若 `push` 或 `pull` 过程中出现 443 等错误，右键 `git bash here`，敲入以下命令：
+```shell script
+git config --global --unset http.proxy
+```
 
 
 ## Step 1. 将远程仓库克隆到你的本地
