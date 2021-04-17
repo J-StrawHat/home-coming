@@ -32,7 +32,7 @@ public class Elder {
 
     @ApiModelProperty("性别")
     @TableField("gender")
-    private Integer gender;
+    private String gender;
 
     @ApiModelProperty("民族")
     @TableField("nation")
@@ -86,7 +86,9 @@ public class Elder {
     @TableField("miss_type")
     private Integer missTypeId;
 
-
+    @ApiModelProperty("失踪类型")
+    @TableField(exist = false)
+    private MissingType missingType;
 
     @ApiModelProperty("联系人")
     @TableField("contactor")

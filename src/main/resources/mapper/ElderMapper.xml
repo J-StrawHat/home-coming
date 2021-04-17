@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.ElderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.demo.pojo.Elder">
+        <id column="id" property="id" />
+        <result column="name" property="elderName" />
+        <result column="age" property="age" />
+        <result column="gender" property="gender" />
+        <result column="nation" property="nation" />
+        <result column="native" property="eldernative" />
+        <result column="birthday" property="birthday" />
+        <result column="feature" property="feature" />
+        <result column="miss_height" property="missHeight" />
+        <result column="miss_weight" property="missWeight" />
+        <result column="miss_province" property="missProvince" />
+        <result column="miss_city" property="missCity" />
+        <result column="miss_county" property="missCounty" />
+        <result column="miss_town" property="missTown" />
+        <result column="miss_desc" property="missDesc" />
+        <result column="miss_time" property="missTime" />
+        <result column="miss_type" property="missTypeId" />
+        <result column="contactor" property="contactor" />
+        <result column="contact_tel" property="contactTel" />
+        <result column="physical_condition" property="physicalCondition" />
+        <result column="psyc_condition" property="psycCondition" />
+        <result column="ID_num" property="IDnum" />
+        <result column="photo" property="photo" />
+        <result column="pos_pla_province" property="posPlaProvince" />
+        <result column="pos_pla_city" property="posPlaCity" />
+        <result column="pos_pla_county" property="posPlaCounty" />
+        <result column="pos_pla_town" property="posPlaTown" />
+        <result column="pos_pla_desc" property="posPlaDesc" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+
+    <resultMap id="ElderWithMissingType" type="com.demo.pojo.Elder" extends="BaseResultMap">
+        <association property="missingType" javaType="com.demo.pojo.MissingType">
+            <id column="mid" property="id" /> <!--走失类型ID-->
+            <result column="miss_typeName" property="missTypeName" ></result>
+        </association>
+    </resultMap>
+
+
+</mapper>
