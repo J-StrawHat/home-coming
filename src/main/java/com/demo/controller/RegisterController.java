@@ -7,6 +7,7 @@ import com.demo.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,8 @@ public class RegisterController {
     @ApiOperation("注册用户")
     @PostMapping("/register")
     public RespBean registerUser(@RequestBody User user){
+        String encode = new BCryptPasswordEncoder().encode(user.getPassword());
+        user.setPassword(encode);
         if(userService.hasUsed(user.getUsername())){
             return RespBean.error("用户名已经被注册");
         }

@@ -64,7 +64,7 @@ public class Elder {
 
     @ApiModelProperty("失踪城市")
     @TableField("miss_city")
-    private String missCity;
+        private String missCity;
 
     @ApiModelProperty("失踪区/县")
     @TableField("miss_county")
@@ -72,7 +72,7 @@ public class Elder {
 
     @ApiModelProperty("失踪街道/镇")
     @TableField("miss_town")
-    private String missTown;
+        private String missTown;
 
     @ApiModelProperty("失踪地详细说明")
     @TableField("miss_desc")

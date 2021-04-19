@@ -3,8 +3,11 @@ package com.demo.controller;
 import com.demo.pojo.Elder;
 import com.demo.pojo.RespBean;
 import com.demo.service.IElderService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,5 +66,14 @@ public class ElderController {
         else {
             return RespBean.error("修改失败");
         }
+    }
+    @ApiOperation("老人信息分页查询")
+    @GetMapping("/ElderPage/{p}")
+    public PageInfo setUserInfo(@PathVariable("p") Integer p){
+        PageHelper.startPage(p,6);
+        List<Elder> allElderInfo = elderService.getAllElderInfo();
+        PageInfo pageInfo = new PageInfo(allElderInfo);
+        return  pageInfo;
+
     }
 }

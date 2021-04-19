@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#header{
+     margin-bottom: 70px;
+}   
+.nav-displacementone{   
+    margin-top: 7px;
+}
+#main{
+     overflow: auto;
+}
+.orange{
+    float: right;
+}
+#mycollapse{
+    width: 500px;
+    margin-top: 20px;
+    float: left;
+}
+#mymovie{
+    margin: 20px 20px;
+    float: left;
+}
+#containerTwo{
+    overflow:auto;
+}
+.list-group{
+    width: 450px;
+    margin: 20px 0;
+    float: left;
+}
+#footer{
+    background-color: black;
+    color: blanchedalmond;
+    height: 200px;
+    text-align: center;
+}
+.midfooter{
+    margin: 0 auto;
+}
