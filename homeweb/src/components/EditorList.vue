@@ -6,7 +6,7 @@
         <el-input v-model="addList.username"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="addList.password"></el-input>
+        <el-input v-model="addList.password" type="password"></el-input>
       </el-form-item>
 
       <el-form-item label="年龄" prop="age">

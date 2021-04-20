@@ -268,7 +268,7 @@ name: "AddOld",
       postRequest("/Elder",this.addList).then(
           (result)=>
           {
-            this.$router.push("/oldlist")
+            this.$router.push("/home/oldlist")
           }
       )
     },

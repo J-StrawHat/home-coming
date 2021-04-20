@@ -44,8 +44,8 @@
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                   aria-haspopup="true" aria-expanded="false">关于我们 </a>
              </li>
-             <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
-             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+             <li><a href="javascript:;" @click="toregister"><span class="glyphicon glyphicon-user" ></span> 注册</a></li>
+             <li><a href="javascript:;" @click="tologin"><span class="glyphicon glyphicon-log-in" ></span> 登录</a></li>
            </ul>
          </div><!-- /.navbar-collapse -->
        </div><!-- /.container-fluid -->
@@ -64,7 +64,7 @@
            <!-- 轮播（Carousel）项目 -->
            <div class="carousel-inner">
              <div class="item active">
-               <img src="../assets/phtots/arriv4.jpg" alt="First slide">
+               <img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gpqaql4khtj30xh0go40n.jpg" alt="First slide">
                <div class="carousel-caption">标题 1</div>
              </div>
              <div class="item">
@@ -104,20 +104,9 @@
              </div>
              <div id="collapseOne" class="panel-collapse collapse in">
                <div class="panel-body">
-                 <a href="#">邓鹏程</a>
-                 <a href="#">aaaa</a>
-                 <a href="#">bbbb</a>
-                 <a href="#">邓鹏程</a>
-                 <a href="#">aaaa</a>
-                 <a href="#">bbbb</a>
-                 <a href="#">邓鹏程</a>
-                 <a href="#">aaaa</a>
-                 <a href="#">bbbb</a>  <a href="#">邓鹏程</a>
-                 <a href="#">aaaa</a>
-                 <a href="#">bbbb</a>
-                 <a href="#">邓鹏程</a>
-                 <a href="#">aaaa</a>
-                 <a href="#">bbbb</a>
+                 <div href="#">恭喜失踪7天的邓鹏程老人在湖南长沙被找到</div>
+                 <div href="#">恭喜失踪一个月的杨磊老人在福建厦门被找到</div>
+                 <div href="#">恭喜失踪半年的张三老人在广西桂林被找到</div>
                </div>
              </div>
            </div>
@@ -133,9 +122,9 @@
              </div>
              <div id="collapseTwo" class="panel-collapse collapse">
                <div class="panel-body">
-                 Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                 nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-                 lomo.
+                 <div href="#">恭喜失踪15天的李四老人在湖南长沙被找到</div>
+                 <div href="#">恭喜失踪20天的王五老人在福建厦门被找到</div>
+                 <div href="#">恭喜失踪半年的高进老人在广西桂林被找到</div>
                </div>
              </div>
            </div>
@@ -186,12 +175,12 @@
          </video>
        </div>
        <ul class="list-group">
-         <li class="list-group-item"><a href="#">免费 Window 空间托管</a></li>
-         <li class="list-group-item"><a href="#">免费 Window 空间托管</a></li>
-         <li class="list-group-item"><a href="#">免费 Window 空间托管</a></li>
-         <li class="list-group-item"><a href="#">免费 Window 空间托管</a></li>
-         <li class="list-group-item"><a href="#">免费 Window 空间托管</a></li>
-         <li class="list-group-item"><a href="#">免费 Window 空间托管</a></li>
+         <li class="list-group-item"><a href="#">感谢谢同学提供邓鹏程失踪的线索</a></li>
+         <li class="list-group-item"><a href="#">感谢朱同学提供了有用线索</a></li>
+         <li class="list-group-item"><a href="#">感谢魏同学提供了杨磊失踪的线索</a></li>
+         <li class="list-group-item"><a href="#">感觉左同学提供的线索</a></li>
+         <li class="list-group-item"><a href="#">感谢张同学提供对救援的大力帮助</a></li>
+         <li class="list-group-item"><a href="#">感谢刘同学对救援提供的大力帮助</a></li>
        </ul>
 
      </div>
